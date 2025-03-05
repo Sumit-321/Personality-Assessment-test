@@ -1,0 +1,25 @@
+{% extends "base.html" %}
+{% block heading %}{% endblock %}
+{% block content %}
+<div style="margin-left: 34%; margin-top: 10%; width: 35%; height: 200px; border: 1px solid black; border-radius: 25px; background-color: rgb(118, 171, 231);">
+    <form method="POST" action="/user_login" enctype="multipart/form-data" style="margin-left: 10%; margin-top: 5%;">
+        <label style="font-size: 20px; font-weight: bold; margin-left: 30%;">User Login</label>
+        <br><br>
+        <label style="font-size: 16px; font-weight: bold;">Username</label>
+        <input style="margin-left: 10%;" type="text" name="username" id="username"></input>
+        <br><br>
+        <label style="font-size: 16px; font-weight: bold;">Password</label>
+        <input style="margin-left: 10%;" type="password" name="password" id="password"></input>
+        <br><br>
+        <input type="submit" value="Submit" style="margin-left: 35%; width: 20%; height: 30px; border-radius: 5px; background-color: rgb(0, 255, 0); font-size: 18px; font-weight: bold;"></input>
+    </form>
+</div>
+{% endblock %}
+{% block script %}
+<script>
+    if ("{{error_message}}" != ""){
+        document.getElementById("error_modal").style.display= "block";
+        document.getElementById("error_modal_text").innerText= "{{error_message}}";
+    }
+</script>
+{% endblock %}

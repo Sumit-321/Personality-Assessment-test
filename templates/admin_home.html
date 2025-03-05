@@ -1,0 +1,33 @@
+{% extends "base.html" %}
+
+{% block heading %}
+{% endblock %}
+
+{% block content %}
+<h1 style="width: 100%; text-align: center; display: inline-block; margin-top: 7%;">Candidate Selection</h1>
+<div style="margin: auto; width: 35%; height: 300px; border: 1px solid black; border-radius: 10px; background-color: rgb(118, 171, 231);">
+    <form method="POST" action="/show_responses" enctype="multipart/form-data" style="margin-top: 5%;">
+        <select id="candidate_username" name="candidate_username" style="font-size: 20px; width: 70%; height: 50px; margin-left: 15%; border-radius: 20px;">
+            <option value="">Select a value</option>
+            {% for i in range(0, userid_names|length) %}
+                <option value="{{userid_names[i][0]}}">{{userid_names[i][1]}}</option>
+            {% endfor %}
+        </select>
+        <br><br><br><br>
+        <input onclick="return check_input()" type="submit" value="Submit" style="margin-left: 35%; width: 30%; height: 40px; border-radius: 5px; background-color: rgb(0, 255, 0); font-size: 18px; font-weight: bold;"></input>
+    </form>
+</div>
+{% endblock %}
+
+{% block script %}
+<script>
+    function check_input(){
+        if (document.getElementById("candidate_username").value == ""){
+            document.getElementById("error_modal").style.display= "block";
+            document.getElementById("error_modal_text").innerText= "Please select a candidate name";
+            return false;
+        }
+    }
+
+</script>
+{% endblock %}
